@@ -1,5 +1,7 @@
 const AppDisplay = imports.ui.appDisplay;
-const Shell = imports.gi.Shell;
+const GLib = imports.gi.GLib;
+
+const DESKTOP_DIRECTORY = "/home/user/Desktop";
 
 // Save the standard Menu globally to be able to reset it
 var ParentMenu;
@@ -24,8 +26,10 @@ function enable () {
             this._appendSeparator();
             let item = this._appendMenuItem("Add to Desktop");
             item.connect('activate', () => {
-                let appPath = this._source.app.get_app_info().get_filename();
+                let appPath = this._source.app.get_app_info().get_filename(); // get the .desktop file complete path
                 myLog(appPath);
+                // create a soft symbolic link on the desktop
+                GLib.spawn_command_line_sync("ln -s " + appPath + " " + DESKTOP_DIRECTORY);
             });
         }
     }
