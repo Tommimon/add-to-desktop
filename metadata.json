@@ -1,0 +1,10 @@
+{
+  "description" : "a simple extension",
+  "name" : "add-to-desktop",
+  "shell-version" : [
+    "3.36.2"
+  ],
+  "url" : "",
+  "uuid" : "add-to-desktop@tommimon",
+  "version" : 0.1
+}

@@ -1,0 +1,5 @@
+# Developer private file directory
+/private/
+
+# IntelliJ directory
+/.idea/
