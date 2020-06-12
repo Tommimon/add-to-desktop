@@ -16,13 +16,19 @@ When you have your shortcut on the desktop you still have to enable it with
 right-click and `Allow Launching` as if you create the shortcut manually.
 
 ## Installation
-- Download `name` from the releases section
+- Download `add-to-desktop@tommimon.tar` from the releases section
 - Extract
 - Add the `add-to-desktop@tommimon` folder to gnome extensions folder*
 - Restart the Gnome-Shell**
-- Open the Extensions app
+- Open (or restart) the Extensions app
 - Enable `Add to Desktop`
 - Enjoy
+
+\* Default folder should be `~/.local/share/gnome-shell/extensions/` for one user or
+`/usr/share/gnome-shell/extensions` for every user.
+
+\** Hit <kbd>Alt</kbd> + <kbd>F2</kbd> type `r` and hit <kbd>Enter</kbd>, if you prefer 
+you can log out instead.
 
 ## How does it work
 What this extension actually do is creating soft symbolic links pointing to the
