@@ -26,6 +26,7 @@ right-click and `Allow Launching` as if you create the shortcut manually.
 
 \* Default folder should be `~/.local/share/gnome-shell/extensions/` for manually installed extensions
 if there isn't this directory create it.
+
 \** Hit <kbd>Alt</kbd> + <kbd>F2</kbd> type `r` and hit <kbd>Enter</kbd>, if you prefer 
 you can log out instead.
 
