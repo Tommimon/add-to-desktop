@@ -16,7 +16,7 @@ When you have your shortcut on the desktop you still have to enable it with
 right-click and `Allow Launching` as if you create the shortcut manually.
 
 ## Installation
-- Download `add-to-desktop@tommimon.tar` from the releases section
+- Download `add-to-desktop@tommimon.tar.xz` from the releases section
 - Extract
 - Add the `add-to-desktop@tommimon` folder to gnome extensions folder*
 - Restart the Gnome-Shell**
