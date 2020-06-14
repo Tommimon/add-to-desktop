@@ -3,7 +3,7 @@ const GLib = imports.gi.GLib;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const MyLog = Me.imports.myLog.MyLog;
-const PrivilegedExec = Me.imports.privilegedExec.PrivilegedExec;
+const PrivilegedExec = Me.imports.asyncExec.PrivilegedExec;
 const Extension = Me.imports.extension;
 
 var PermissionsHandler = class PermissionsHandler {
@@ -22,7 +22,7 @@ var PermissionsHandler = class PermissionsHandler {
     }
 
     fixPermissions() {
-        let args = ["chmod", "755", this.appPath];
+        let args = ["chmod 755 " + this.appPath];
         PrivilegedExec(args, (out, err) => {
             this.chmodCompleted(out, err);
         });
