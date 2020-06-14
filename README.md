@@ -15,7 +15,7 @@ to the app. This step may require your root password.
 When you have your shortcut on the desktop you still have to enable it with
 right-click and `Allow Launching` as if you create the shortcut manually.
 
-##Dependences
+## Dependences
 This extension needs the `desktop-icons` extension installed and enabled to work properly.
 https://extensions.gnome.org/extension/1465/desktop-icons/
 
