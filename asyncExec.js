@@ -1,14 +1,12 @@
 const Gio = imports.gi.Gio;
 
 // executes command as root asking for authentication and pass the result to the function onFinish
-var PrivilegedExec = function privilegedExec(cmd, onFinish) {
-    return NormalExec("pkexec " + cmd, onFinish);
+var PrivilegedExec = function privilegedExec(args, onFinish) {
+    return NormalExec(['pkexec'].concat(args), onFinish);
 }
 
 // executes command and pass the result to the function onFinish
-var NormalExec = function normalExec(cmd, onFinish) {
-    args = cmd.split(" ");
-
+var NormalExec = function normalExec(args, onFinish) {
     try {
         let proc = Gio.Subprocess.new(
             args,

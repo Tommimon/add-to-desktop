@@ -25,7 +25,6 @@ function insertCustomEntry(menu) {
         let appPath = menu._source.app.get_app_info().get_filename(); // get the .desktop file complete path
         MyLog(appPath);
         let handler = new PermissionsHandler.PermissionsHandler(appPath);
-        handler.handlePermissions();
     });
 }
 

@@ -5,15 +5,19 @@ const Me = ExtensionUtils.getCurrentExtension();
 const MyLog = Me.imports.myLog.MyLog;
 const PrivilegedExec = Me.imports.asyncExec.PrivilegedExec;
 const Extension = Me.imports.extension;
+const CheckPermissions = Me.imports.checkPermissions;
 
 var PermissionsHandler = class PermissionsHandler {
     constructor(appPath) {
         this.appPath = appPath;
+        this.permissions = new CheckPermissions.CheckPermissions(this.appPath, () => {
+            this.handlePermissions();
+        });
     }
 
     // requires authentication (if needed) and creates link
     handlePermissions() {
-        if(true) {
+        if(this.permissions.owner === "root") {
             this.fixPermissions();
         }
         else {
@@ -22,7 +26,7 @@ var PermissionsHandler = class PermissionsHandler {
     }
 
     fixPermissions() {
-        let args = ["chmod 755 " + this.appPath];
+        let args = ["chmod", "755", this.appPath];
         PrivilegedExec(args, (out, err) => {
             this.chmodCompleted(out, err);
         });
