@@ -11,16 +11,18 @@ var PermissionsHandler = class PermissionsHandler {
     constructor(appPath) {
         this.appPath = appPath;
         this.permissions = new CheckPermissions.CheckPermissions(this.appPath, () => {
-            this.handlePermissions();
+            self.handlePermissions(); // I'm setting the action to do after initInfo()
         });
+        var self = this;
+        this.permissions.initInfo(); // get permission info and than start working on them
     }
 
     // requires authentication (if needed) and creates link
     handlePermissions() {
-        MyLog(this.permissions.current);
-        MyLog(this.permissions.owner);
-        MyLog(this.permissions.ownerExec);
-        MyLog(this.permissions.everyoneExec);
+        MyLog("current = " + this.permissions.current);
+        MyLog("owner = " + this.permissions.owner);
+        MyLog("owner_can = " + this.permissions.ownerExec);
+        MyLog("everyone_can = " + this.permissions.everyoneExec);
 
         if(this.permissions.everyoneExec) {
             MyLog("No extra permissions needed");

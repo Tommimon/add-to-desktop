@@ -12,29 +12,36 @@ var CheckPermissions = class CheckPermissions {
         this.owner = null;
         this.ownerExec = false; // execute permission for file owner
         this.everyoneExec = false;
-        this.getInfo(); // perform the commands to get the infos and fills the variables
     }
 
     // saves the result of ls -l
-    getInfo() {
+    initInfo() {
+        var self = this;
         // is inside MyLog to print errors
-        MyLog(AsyncExec.NormalExec(["ls", "-l", this.appPath], (out, err) => {
-            this.info = out;
-            this.findOwner();
-            this.findPermissions();
-            this.getCurrent();
-        }));
+        let error = AsyncExec.NormalExec(["ls", "-l", this.appPath], (out, err) => {
+            self.info = out;
+            self.findOwner();
+            self.findPermissions();
+            self.getCurrent();
+        });
+        if(error != null) {
+            MyLog(error);
+        }
     }
 
     getCurrent() {
-        MyLog(AsyncExec.NormalExec(["whoami"], (out, err) => {
-            this.current = out;
-            this.onFinishInit();
-        }));
+        var self = this;
+        let error = AsyncExec.NormalExec(["whoami"], (out, err) => {
+            self.current = out.replace("\n", "");
+            self.onFinishInit();
+        });
+        if(error != null) {
+            MyLog(error);
+        }
     }
 
     findOwner() {
-        this.owner = ths.info.split(" ")[2];
+        this.owner = this.info.split(" ")[2];
     }
 
     findPermissions() {
