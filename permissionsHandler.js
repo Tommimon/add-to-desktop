@@ -24,13 +24,11 @@ var PermissionsHandler = class PermissionsHandler {
     fixPermissions() {
         let args = ["chmod", "755", this.appPath];
         PrivilegedExec(args, (out, err) => {
-            MyLog("arrivato");
             this.chmodCompleted(out, err);
         });
     }
 
     chmodCompleted(out, err) {
-        MyLog("arrivatissimo");
         // if we have successfully changed the permissions we create the link
         if(err === undefined) {
             this.createLink(this.appPath);
