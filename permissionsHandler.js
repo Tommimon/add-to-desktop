@@ -14,6 +14,10 @@ var PermissionsHandler = class PermissionsHandler {
             self.handlePermissions(); // I'm setting the action to do after initInfo()
         });
         var self = this;
+    }
+
+    // starts the whole process
+    start() {
         this.permissions.initInfo(); // get permission info and than start working on them
     }
 
