@@ -22,9 +22,9 @@ var PermissionsHandler = class PermissionsHandler {
         MyLog("current = " + this.permissions.current);
         MyLog("owner = " + this.permissions.owner);
         MyLog("owner_can = " + this.permissions.ownerExec);
-        MyLog("everyone_can = " + this.permissions.everyoneExec);
+        MyLog("other_can = " + this.permissions.otherExec);
 
-        if(this.permissions.everyoneExec) {
+        if(this.permissions.otherExec) {
             MyLog("No extra permissions needed");
             this.createLink();
         }
@@ -47,14 +47,15 @@ var PermissionsHandler = class PermissionsHandler {
     }
 
     fixPermissions() {
-        let args = ["chmod", "744", this.appPath];
+        // adding to all instead to other is preferred because it makes more sense
+        let args = ["chmod", "u+x", this.appPath];
         AsyncExec.NormalExec(args, (out, err) => {
             this.createLink();
         });
     }
 
     sudoFixPermissions() {
-        let args = ["chmod", "755", this.appPath];
+        let args = ["chmod", "a+x", this.appPath];
         AsyncExec.PrivilegedExec(args, (out, err) => {
             this.chmodCompleted(out, err);
         });

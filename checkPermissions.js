@@ -11,7 +11,7 @@ var CheckPermissions = class CheckPermissions {
         this.current = null;
         this.owner = null;
         this.ownerExec = false; // execute permission for file owner
-        this.everyoneExec = false;
+        this.otherExec = false;
     }
 
     // saves the result of ls -l
@@ -47,6 +47,6 @@ var CheckPermissions = class CheckPermissions {
     findPermissions() {
         let permissions = this.info.split(" ")[0];
         this.ownerExec = permissions.charAt(3) === "x";
-        this.everyoneExec = permissions.charAt(9) === "x";
+        this.otherExec = permissions.charAt(9) === "x";
     }
 }
