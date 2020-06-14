@@ -15,7 +15,7 @@ to the app. This step may require your root password.
 When you have your shortcut on the desktop you still have to enable it with
 right-click and `Allow Launching` as if you create the shortcut manually.
 
-## Dependences
+## Dependencies
 This extension needs the [desktop-icons](https://extensions.gnome.org/extension/1465/desktop-icons/)
 extension installed and enabled to work properly.
 
@@ -47,7 +47,7 @@ working properly, and you have to create a new one from zero. With soft links th
 happen as long as the `.desktop` file used by the application launcher stay in the
 same place which usually is the case.
 
-This approach has a dow side: permission issues but now this extensions takes care automatically
+This approach has a dow side: permission issues but now this extension takes care automatically
 of those problems and changes the launcher file permissions adding the executable
 permission if and only when needed. This operation may require root authentication
-if the file is owned from another user.
+if the file is owned by another user.
