@@ -8,6 +8,7 @@ var CheckPermissions = class CheckPermissions {
         this.appPath = appPath;
         this.onFinishInit = onFinishInit; // function to execute when all the permissions are found
         this.info = null;
+        this.current = null;
         this.owner = null;
         this.ownerExec = false; // execute permission for file owner
         this.everyoneExec = false;
@@ -16,11 +17,18 @@ var CheckPermissions = class CheckPermissions {
 
     // saves the result of ls -l
     getInfo() {
-        MyLog("oh");
+        // is inside MyLog to print errors
         MyLog(AsyncExec.NormalExec(["ls", "-l", this.appPath], (out, err) => {
             this.info = out;
             this.findOwner();
             this.findPermissions();
+            this.getCurrent();
+        }));
+    }
+
+    getCurrent() {
+        MyLog(AsyncExec.NormalExec(["whoami"], (out, err) => {
+            this.current = out;
             this.onFinishInit();
         }));
     }
