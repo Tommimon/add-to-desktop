@@ -21,9 +21,9 @@ extension installed and enabled to work properly.
 Otherwise you will not be able to see the shortcuts you are creating.
 
 ## Installation
-- Download `add-to-desktop@tommimon.tar.xz` from the releases section
-- Extract
-- Add the `add-to-desktop@tommimon` folder to gnome extensions folder*
+- Download zip from the releases section or gnome-shell extensions site
+- Extract in a folder called `add-to-desktop@tommimon.github.com`
+- Add the `add-to-desktop@tommimon.github.com` folder to gnome extensions folder*
 - Restart the Gnome-Shell**
 - Open (or restart) the Extensions app
 - Enable `Add to Desktop`
