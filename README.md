@@ -9,11 +9,11 @@ The idea is simple: instead of searching for the .desktop files throw multiple
 folders let's use the gnome application launcher that already groups all our apps.
 
 This extension adds a new line to the app context menu in the application launcher,
-the new entry (`Add to Desktop`) if clicked automatically creates a desktop shortcut
+the new entry ('Add to Desktop') if clicked automatically creates a desktop shortcut
 to the app. This step may require your root password.
 
 When you have your shortcut on the desktop you still have to enable it with
-right-click and `Allow Launching` as if you create the shortcut manually.
+right-click and 'Allow Launching' as if you create the shortcut manually.
 
 ## Dependencies
 This extension needs the [desktop-icons](https://extensions.gnome.org/extension/1465/desktop-icons/)
@@ -26,7 +26,7 @@ Otherwise you will not be able to see the shortcuts you are creating.
 - Add the `add-to-desktop@tommimon.github.com` folder to gnome extensions folder*
 - Restart the Gnome-Shell**
 - Open (or restart) the Extensions app
-- Enable `Add to Desktop`
+- Enable 'Add to Desktop'
 - Enjoy
 
 \* Default folder should be `~/.local/share/gnome-shell/extensions/` for manually installed extensions
