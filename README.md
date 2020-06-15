@@ -18,6 +18,7 @@ right-click and `Allow Launching` as if you create the shortcut manually.
 ## Dependencies
 This extension needs the [desktop-icons](https://extensions.gnome.org/extension/1465/desktop-icons/)
 extension installed and enabled to work properly.
+Otherwise you will not be able to see the shortcuts you are creating.
 
 ## Installation
 - Download `add-to-desktop@tommimon.tar.xz` from the releases section
