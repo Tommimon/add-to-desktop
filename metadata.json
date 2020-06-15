@@ -2,7 +2,14 @@
   "description" : "An easy way to create desktop app shortcut in gnome",
   "name" : "Add to Desktop",
   "shell-version" : [
-    "3.36"
+    "3.28",
+    "3.29",
+    "3.30",
+    "3.31",
+    "3.32",
+    "3.33",
+    "3.34",
+    "3.35"
   ],
   "url" : "https://github.com/Tommimon/add-to-desktop",
   "uuid" : "add-to-desktop@tommimon.github.com",
