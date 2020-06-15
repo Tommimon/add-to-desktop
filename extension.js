@@ -33,8 +33,8 @@ function enable () {
     // AppIconMenu is the var which contains the class used to instantiate the context menu
     // Assigning my own custom menu that extends the standard menu so the custom will be used for instantiate
     AppDisplay.AppIconMenu = class customMenu extends ParentMenu {
-        _rebuildMenu() {
-            super._rebuildMenu();
+        _redisplay() {
+            super._redisplay();
             insertCustomEntry(this);
         }
     }
