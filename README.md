@@ -5,7 +5,7 @@ An easy way to create desktop app shortcut in GNOME
 This simple extension tries to make easier the GNOME process to create a desktop
 shortcut for apps.
 
-The idea is simple: instead of searching for the '.desktop' files through multiple
+The idea is simple: instead of searching for the `.desktop` files through multiple
 folders let's use the application launcher that already groups all our apps.
 
 This extension adds a new line to the app context menu in the application launcher,
