@@ -20,6 +20,9 @@ This extension needs the [Desktop Icons](https://extensions.gnome.org/extension/
 extension installed and enabled to work properly.
 Otherwise you will not be able to see the shortcuts you are creating.
 
+Currently, I'm working to get this extension merged in Desktop Icons project, if you would like
+having this feature by default in Desktop Icons extension let them now.
+
 ## Installation
 - Download zip from the releases section
 - Extract in a folder named `add-to-desktop@tommimon.github.com`
@@ -48,7 +51,7 @@ working properly, and you have to create a new one from zero. With soft links th
 happen as long as the `.desktop` file used by the application launcher remains in the
 same place which usually is the case.
 
-This approach has a down side: permission issues but now this extension takes care automatically
+This approach has a downside: permission issues but now this extension takes care automatically
 of those problems and changes the launcher file permissions adding the executable
 permission if and only if is needed. This operation may require root authentication
 if the file is owned by another user.
