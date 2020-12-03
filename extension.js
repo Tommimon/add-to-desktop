@@ -13,7 +13,7 @@ function init () {
 
 function enable () {
     parentMenu = AppDisplay.AppIconMenu;
-    ShortcutMaker.addShortcutButton(parentMenu);
+    ShortcutMaker.editMenuClass(parentMenu);
 }
 
 function disable () {

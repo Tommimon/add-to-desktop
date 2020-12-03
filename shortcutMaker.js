@@ -28,21 +28,31 @@ function execAsync(args, callback) {
 }
 
 // override the context menu rebuild method to add the new item
-function addShortcutButton(parentMenu) {
+function editMenuClass(parentMenu) {
     AppDisplay.AppIconMenu = class CustomMenu extends parentMenu {
-        // use _redisplay() instead for shell version 3.35 or earlier
+        // for shell version 3.35 or earlier
+        _redisplay() {
+            super._redisplay();
+            insertAddToDesktopButton(this);
+        }
+
+        // for shell version 3.36 or later
         _rebuildMenu() {
             super._rebuildMenu();
-            this._appendSeparator();
-            // Add the "Add to Desktop" item to the menu
-            let item = this._appendMenuItem('Add to Desktop');
-            item.connect('activate', () => {
-                let appPath = this._source.app.get_app_info().get_filename(); // get the .desktop file complete path
-                let maker = new ShortcutMaker(appPath);
-                maker.start();
-            });
+            insertAddToDesktopButton(this);
         }
     }
+}
+
+function insertAddToDesktopButton(menu) {
+    menu._appendSeparator();
+    // Add the "Add to Desktop" item to the menu
+    let item = menu._appendMenuItem('Add to Desktop');
+    item.connect('activate', () => {
+        let appPath = menu._source.app.get_app_info().get_filename(); // get the .desktop file complete path
+        let maker = new ShortcutMaker(appPath);
+        maker.start();
+    });
 }
 
 // decides which permission are required, adds them, creates the shortcut and allows launching
