@@ -1,6 +1,7 @@
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const AppDisplay = imports.ui.appDisplay;
+const PopupMenu = imports.ui.popupMenu;
 
 var S_IWOTH = 0o00002;
 
@@ -45,13 +46,35 @@ function editMenuClass(parentMenu) {
 }
 
 function insertAddToDesktopButton(menu) {
-    menu._appendSeparator();
-    // Add the "Add to Desktop" item to the menu
-    let item = menu._appendMenuItem('Add to Desktop');
+    let nameArray = ["Add to Favorites", "Remove from Favorites"]
+    let itemsArray = menu._getMenuItems();
+    let pos = -1;
+    for(let i = itemsArray.length-1; i >= 0; i--) {
+        let item = itemsArray[i];
+        // check class because there are also separators or other things
+        if(item instanceof PopupMenu.PopupMenuItem) {
+            let label = item.label.get_text();
+            if(nameArray.includes(label)) {
+                pos = i;
+            }
+        }
+    }
+
+    let label = "Add to Desktop";
+    let item;
+    if(pos === -1) {
+        menu._appendSeparator();
+        item = menu._appendMenuItem(label); // add at the end
+    }
+    else {
+        item = new PopupMenu.PopupMenuItem(label);
+        menu.addMenuItem(item, pos+1); // insert at specific position
+    }
+
     item.connect('activate', () => {
         let appPath = menu._source.app.get_app_info().get_filename(); // get the .desktop file complete path
-        let maker = new ShortcutMaker(appPath);
-        maker.start();
+        let shortcutMaker = new ShortcutMaker(appPath);
+        shortcutMaker.makeShortcut();
     });
 }
 
@@ -64,7 +87,7 @@ class ShortcutMaker {
         this._current = GLib.get_user_name();
     }
 
-    start() {
+    makeShortcut() {
         this._info.initInfo(() => {this._decideAction()});
     }
 
