@@ -117,6 +117,26 @@ var ShortcutMaker = class ShortcutMaker {
     _setMetadata() {
         let proc = new Gio.Subprocess({argv: ['gio', 'set', this._copyPath, 'metadata::trusted', 'true']});
         proc.init(null);
+        proc.wait(null);
         //TODO: metadata::shortcut-of
+        this._overwriteItself();
+    }
+
+    // overwrite with itself to call desktop icon refresh
+    _overwriteItself() {
+        this._shortcutFile.copy_async(
+            this._shortcutFile,
+            Gio.FileCopyFlags.OVERWRITE | Gio.FileCopyFlags.ALL_METADATA,
+            GLib.PRIORITY_DEFAULT,
+            null,
+            null,
+            (source, result) => {
+                try {
+                    source.copy_finish(result);
+                    log('Shortcut created successfully');
+                } catch(e) {
+                    log(`Failed to create shortcut ${e.message}`);
+                }
+            });
     }
 }
