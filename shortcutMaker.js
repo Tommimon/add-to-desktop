@@ -5,29 +5,6 @@ const PopupMenu = imports.ui.popupMenu;
 
 var DEFAULT_AND_UEXEC = 0o00764;
 
-// executes command and pass the result to the callback function
-function execAsync(args, callback) {
-    let proc = Gio.Subprocess.new(
-        args,
-        Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
-    );
-
-    proc.communicate_utf8_async(null, null, (proc, res) => {
-        let out, err;
-        try {
-            let [, stdout, stderr] = proc.communicate_utf8_finish(res);
-            // Failure
-            if (!proc.get_successful())
-                err = stderr;
-            // Success
-            out = stdout;
-        } catch (e) {
-            err = e;
-        }
-        callback(out, err); // the async errors and outputs are passed to another function
-    });
-}
-
 // override the context menu rebuild method to add the new item
 function editMenuClass(parentMenu) {
     AppDisplay.AppIconMenu = class CustomMenu extends parentMenu {
@@ -130,9 +107,16 @@ var ShortcutMaker = class ShortcutMaker {
             (source, result) => {
                 try {
                     source.set_attributes_finish (result);
+                    this._setMetadata();
                 } catch(e) {
                     log(`Failed to set unix mode: ${e.message}`);
                 }
             });
+    }
+
+    _setMetadata() {
+        let proc = new Gio.Subprocess({argv: ['gio', 'set', this._copyPath, 'metadata::trusted', 'true']});
+        proc.init(null);
+        //TODO: metadata::shortcut-of
     }
 }
