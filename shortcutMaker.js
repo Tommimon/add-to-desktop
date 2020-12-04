@@ -114,16 +114,24 @@ var ShortcutMaker = class ShortcutMaker {
             });
     }
 
+    // mark as trusted to allow launching
     _setMetadata() {
         let proc = new Gio.Subprocess({argv: ['gio', 'set', this._copyPath, 'metadata::trusted', 'true']});
         proc.init(null);
-        proc.wait(null);
+        proc.wait_check_async(null,
+            (source, result) => {
+                try {
+                    source.wait_check_finish(result);
+                    this._refresh();
+                } catch(e) {
+                    log(`Failed to allow launching: ${e.message}`);
+                }
+            });
         //TODO: metadata::shortcut-of
-        this._overwriteItself();
     }
 
     // overwrite with itself to call desktop icon refresh
-    _overwriteItself() {
+    _refresh() {
         this._shortcutFile.copy_async(
             this._shortcutFile,
             Gio.FileCopyFlags.OVERWRITE | Gio.FileCopyFlags.ALL_METADATA,
