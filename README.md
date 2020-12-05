@@ -1,4 +1,5 @@
-# Add to Desktop
+# [![add-to-desktop-title][]][add-to-desktop-repo]
+
 An easy way to create desktop app shortcut in GNOME
 
 ## Overview
@@ -41,3 +42,6 @@ experienced app icons changing path updating, this may make your shortcut no mor
 working properly, and you have to create a new one from zero.
 
 Future version may include methods to fix broken shortcuts easier.
+
+[add-to-desktop-title]: https://github.com/Tommimon/add-to-desktop/blob/master/assets/title.png
+[add-to-desktop-repo]: https://github.com/Tommimon/add-to-desktop
