@@ -1,6 +1,6 @@
 # [![add-to-desktop-title][]][add-to-desktop-repo]
 
-An easy way to create desktop app shortcut in GNOME
+An easy way to create desktop app shortcuts in GNOME
 
 ## Overview
 This simple extension tries to make easier the GNOME process to create a desktop
