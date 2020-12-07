@@ -1,4 +1,5 @@
 # compile language
+mkdir locale
 for f in po/*; do
   name=${f:3:${#str}-3};
   mkdir locale/"$name";
