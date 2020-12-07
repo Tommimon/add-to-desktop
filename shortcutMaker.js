@@ -97,26 +97,9 @@ var ShortcutMaker = class ShortcutMaker {
             (source, result) => {
                 try {
                     source.copy_finish(result);
-                    this._setExecutableBit();
-                } catch(e) {
-                    log(`Failed to create shortcut ${e.message}`);
-                }
-            });
-    }
-
-    _setExecutableBit() {
-        let new_info = new Gio.FileInfo();
-        new_info.set_attribute_uint32(Gio.FILE_ATTRIBUTE_UNIX_MODE, DEFAULT_AND_UEXEC);
-        this._shortcutFile.set_attributes_async(new_info,
-            Gio.FileQueryInfoFlags.NONE,
-            GLib.PRIORITY_LOW,
-            null,
-            (source, result) => {
-                try {
-                    source.set_attributes_finish (result);
                     this._setMetadata();
                 } catch(e) {
-                    log(`Failed to set unix mode: ${e.message}`);
+                    log(`Failed to create shortcut file: ${e.message}`);
                 }
             });
     }
@@ -129,7 +112,7 @@ var ShortcutMaker = class ShortcutMaker {
             (source, result) => {
                 try {
                     source.wait_check_finish(result);
-                    this._refresh();
+                    this._setExecutableBit();
                 } catch(e) {
                     log(`Failed to allow launching: ${e.message}`);
                 }
@@ -137,20 +120,20 @@ var ShortcutMaker = class ShortcutMaker {
         //TODO: metadata::shortcut-of
     }
 
-    // overwrite with itself to call desktop icon refresh
-    _refresh() {
-        this._shortcutFile.copy_async(
-            this._shortcutFile,
-            Gio.FileCopyFlags.OVERWRITE | Gio.FileCopyFlags.ALL_METADATA,
-            GLib.PRIORITY_DEFAULT,
-            null,
+    // set executable bit last because this call refresh in desktop icon extension
+    _setExecutableBit() {
+        let new_info = new Gio.FileInfo();
+        new_info.set_attribute_uint32(Gio.FILE_ATTRIBUTE_UNIX_MODE, DEFAULT_AND_UEXEC);
+        this._shortcutFile.set_attributes_async(new_info,
+            Gio.FileQueryInfoFlags.NONE,
+            GLib.PRIORITY_LOW,
             null,
             (source, result) => {
                 try {
-                    source.copy_finish(result);
+                    source.set_attributes_finish (result);
                     log('Shortcut created successfully');
                 } catch(e) {
-                    log(`Failed to create shortcut ${e.message}`);
+                    log(`Failed to set unix mode: ${e.message}`);
                 }
             });
     }
