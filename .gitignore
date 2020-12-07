@@ -3,3 +3,6 @@
 
 # IntelliJ directory
 /.idea/
+
+# Translation compiled
+/locale/

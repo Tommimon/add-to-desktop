@@ -1,7 +1,13 @@
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const AppDisplay = imports.ui.appDisplay;
 const PopupMenu = imports.ui.popupMenu;
+const Gettext = imports.gettext;
+Gettext.bindtextdomain( 'add-to-desktop', Me.dir.get_child('locale').get_path() );
+Gettext.textdomain('add-to-desktop');
+const _ = Gettext.gettext;
 
 var DEFAULT_AND_UEXEC = 0o00764;
 
@@ -23,7 +29,8 @@ function editMenuClass(parentMenu) {
 }
 
 function insertAddToDesktopButton(menu) {
-    let nameArray = ["Add to Favorites", "Remove from Favorites"]
+    // look for both english and translated
+    let nameArray = ['Add to Favorites', 'Remove from Favorites', _('Add to Favorites'), _('Remove from Favorites')]
     let itemsArray = menu._getMenuItems();
     let pos = -1;
     for(let i = itemsArray.length-1; i >= 0; i--) {
@@ -37,7 +44,7 @@ function insertAddToDesktopButton(menu) {
         }
     }
 
-    let label = "Add to Desktop";
+    let label = _('Add to Desktop');
     let item;
     if(pos === -1) {
         menu._appendSeparator();
@@ -67,7 +74,7 @@ var ShortcutMaker = class ShortcutMaker {
 
     // calculates the copy path from the desktop path
     getCopyPath() {
-        let array = this._appPath.split("/");
+        let array = this._appPath.split('/');
         let name = array.pop();
         return this._desktop + '/' + name;
     }
