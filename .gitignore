@@ -4,5 +4,6 @@
 # IntelliJ directory
 /.idea/
 
-# Translation compiled
+# compiled and releases
 /locale/
+/output/
