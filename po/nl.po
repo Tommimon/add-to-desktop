@@ -18,14 +18,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: shortcutMaker.js:47
+#: shortcutMaker.js:52
 msgid "Add to Desktop"
 msgstr "Bureaubladsnelkoppeling maken"
-
-#: shortcutMaker.js:33
-msgid "Add to Favorites"
-msgstr "Toevoegen aan favorieten"
-
-#: shortcutMaker.js:33
-msgid "Remove from Favorites"
-msgstr "Verwijderen uit favorieten"

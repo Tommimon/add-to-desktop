@@ -5,11 +5,16 @@ const GLib = imports.gi.GLib;
 const AppDisplay = imports.ui.appDisplay;
 const PopupMenu = imports.ui.popupMenu;
 const Gettext = imports.gettext;
-Gettext.bindtextdomain( 'add-to-desktop', Me.dir.get_child('locale').get_path() );
-Gettext.textdomain('add-to-desktop');
-const _ = Gettext.gettext;
+const Config = imports.misc.config;
+Gettext.textdomain(Config.GETTEXT_PACKAGE); // use 'gnome-shell' as default domain
+const shell_gettext = Gettext.gettext;
+Gettext.bindtextdomain( 'add-to-desktop', Me.dir.get_child('locale').get_path());
 
 var DEFAULT_AND_UEXEC = 0o00764;
+
+function _(stringIn) {
+	return Gettext.dgettext('add-to-desktop', stringIn)
+}
 
 // override the context menu rebuild method to add the new item
 function editMenuClass(parentMenu) {
@@ -30,7 +35,7 @@ function editMenuClass(parentMenu) {
 
 function insertAddToDesktopButton(menu) {
     // look for both english and translated
-    let nameArray = ['Add to Favorites', 'Remove from Favorites', _('Add to Favorites'), _('Remove from Favorites')]
+    let nameArray = ['Add to Favorites', 'Remove from Favorites', shell_gettext('Add to Favorites'), shell_gettext('Remove from Favorites')]
     let itemsArray = menu._getMenuItems();
     let pos = -1;
     for(let i = itemsArray.length-1; i >= 0; i--) {
