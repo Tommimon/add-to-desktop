@@ -12,9 +12,11 @@
     "3.35",
     "3.36",
     "3.37",
-    "3.38"
+    "3.38",
+    "40.beta",
+    "40"
   ],
   "url" : "https://github.com/Tommimon/add-to-desktop",
   "uuid" : "add-to-desktop@tommimon.github.com",
-  "version" : 4
+  "version" : 5
 }
