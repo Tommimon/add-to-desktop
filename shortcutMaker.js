@@ -2,7 +2,8 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
-const AppDisplay = imports.ui.appDisplay;
+const St = imports.gi.St;
+const AppMenu = imports.ui.appMenu;
 const PopupMenu = imports.ui.popupMenu;
 const Gettext = imports.gettext;
 const Config = imports.misc.config;
@@ -18,16 +19,9 @@ function _(stringIn) {
 
 // override the context menu rebuild method to add the new item
 function editMenuClass(parentMenu) {
-    AppDisplay.AppIconMenu = class CustomMenu extends parentMenu {
-        // for shell version 3.35 or earlier
-        _redisplay() {
-            super._redisplay();
-            insertAddToDesktopButton(this);
-        }
-
-        // for shell version 3.36 or later
-        _rebuildMenu() {
-            super._rebuildMenu();
+    AppMenu.AppMenu = class CustomMenu extends parentMenu {
+        setApp(app) {
+            super.setApp(app);
             insertAddToDesktopButton(this);
         }
     }
@@ -52,7 +46,7 @@ function insertAddToDesktopButton(menu) {
     let label = _('Add to Desktop');
     let item;
     if(pos === -1) {
-        menu._appendSeparator();
+        menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
         item = menu._appendMenuItem(label); // add at the end
     }
     else {
@@ -61,7 +55,7 @@ function insertAddToDesktopButton(menu) {
     }
 
     item.connect('activate', () => {
-        let appPath = menu._source.app.get_app_info().get_filename(); // get the .desktop file complete path
+        let appPath = menu._app.get_app_info().get_filename(); // get the .desktop file complete path
         let shortcutMaker = new ShortcutMaker();
         shortcutMaker.makeShortcut(appPath);
     });

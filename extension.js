@@ -1,4 +1,4 @@
-const AppDisplay = imports.ui.appDisplay;
+const AppMenu = imports.ui.appMenu;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -12,7 +12,7 @@ function init () {
 }
 
 function enable () {
-    parentMenu = AppDisplay.AppIconMenu;
+    parentMenu = AppMenu.AppMenu;
     ShortcutMaker.editMenuClass(parentMenu);
 }
 
