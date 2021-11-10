@@ -18,5 +18,5 @@ function enable () {
 
 function disable () {
     // Reset the menu to the standard one (without new item)
-    AppDisplay.AppIconMenu = parentMenu;
+    AppMenu.AppMenu = parentMenu;
 }
