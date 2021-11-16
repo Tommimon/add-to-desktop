@@ -25,6 +25,7 @@ otherwise you will not be able to see the shortcuts you are creating.
 - Restart the GNOME shell**
 - Open (or restart) the Extensions app (or Tweaks app)
 - Enable 'Add to Desktop'
+- Restart the GNOME shell again**
 - Enjoy
 
 \* Default folder should be `~/.local/share/gnome-shell/extensions/` for manually installed extensions
@@ -40,8 +41,6 @@ What this extension actually do is creating on your Desktop folder a copy of the
 This approach has a downside: if your application gets updated the behaviour of the `.desktop` file may change, I
 experienced app icons changing path updating, this may make your shortcut no more
 working properly, and you have to create a new one from zero.
-
-Future version may include methods to fix broken shortcuts easier.
 
 [add-to-desktop-title]: https://github.com/Tommimon/add-to-desktop/blob/master/assets/title.png
 [add-to-desktop-repo]: https://github.com/Tommimon/add-to-desktop
