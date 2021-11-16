@@ -1,7 +1,6 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
+const { Gio, GLib, St, GObject } = imports.gi;
 const AppDisplay = imports.ui.appDisplay;
 const PopupMenu = imports.ui.popupMenu;
 const Gettext = imports.gettext;
@@ -16,21 +15,20 @@ function _(stringIn) {
 	return Gettext.dgettext('add-to-desktop', stringIn)
 }
 
-// override the context menu rebuild method to add the new item
-function editMenuClass(parentMenu) {
-    AppDisplay.AppIconMenu = class CustomMenu extends parentMenu {
-        // for shell version 3.35 or earlier
-        _redisplay() {
-            super._redisplay();
-            insertAddToDesktopButton(this);
+// override the icon popupMenu method to add the new item
+function editIconClass(parentIcon) {
+    AppDisplay.AppIcon = GObject.registerClass(
+    class CustomIcon extends parentIcon {
+        popupMenu(side = St.Side.LEFT)
+    	    if(!this._menu) {
+    	        super.popupMenu(side);
+    	        insertAddToDesktopButton(this._menu);
+    	    }
+    	    else {
+    	        super.popupMenu(side);
+    	    }
         }
-
-        // for shell version 3.36 or later
-        _rebuildMenu() {
-            super._rebuildMenu();
-            insertAddToDesktopButton(this);
-        }
-    }
+    });
 }
 
 function insertAddToDesktopButton(menu) {
@@ -50,18 +48,17 @@ function insertAddToDesktopButton(menu) {
     }
 
     let label = _('Add to Desktop');
-    let item;
+    item = new PopupMenu.PopupMenuItem(label);
     if(pos === -1) {
-        menu._appendSeparator();
-        item = menu._appendMenuItem(label); // add at the end
+        menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+        menu.addMenuItem(item); // add at the end
     }
     else {
-        item = new PopupMenu.PopupMenuItem(label);
         menu.addMenuItem(item, pos+1); // insert at specific position
     }
 
     item.connect('activate', () => {
-        let appPath = menu._source.app.get_app_info().get_filename(); // get the .desktop file complete path
+        let appPath = menu._app.get_app_info().get_filename(); // get the .desktop file complete path
         let shortcutMaker = new ShortcutMaker();
         shortcutMaker.makeShortcut(appPath);
     });

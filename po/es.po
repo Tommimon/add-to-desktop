@@ -17,6 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: shortcutMaker.js:52
+#: shortcutMaker.js:50
 msgid "Add to Desktop"
 msgstr "Agregar al Escritorio"
