@@ -1,9 +1,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const St = imports.gi.St;
-const AppMenu = imports.ui.appMenu;
+const { Gio, GLib, St, GObject } = imports.gi;
+const AppDisplay = imports.ui.appDisplay;
 const PopupMenu = imports.ui.popupMenu;
 const Gettext = imports.gettext;
 const Config = imports.misc.config;
@@ -17,14 +15,20 @@ function _(stringIn) {
 	return Gettext.dgettext('add-to-desktop', stringIn)
 }
 
-// override the context menu rebuild method to add the new item
-function editMenuClass(parentMenu) {
-    AppMenu.AppMenu = class CustomMenu extends parentMenu {
-        setApp(app) {
-            super.setApp(app);
-            insertAddToDesktopButton(this);
+// override the icon popupMenu method to add the new item
+function editIconClass(parentIcon) {
+    AppDisplay.AppIcon = GObject.registerClass(
+    class CustomIcon extends parentIcon {
+        popupMenu(side = St.Side.LEFT)
+    	    if(!this._menu) {
+    	        super.popupMenu(side);
+    	        insertAddToDesktopButton(this._menu);
+    	    }
+    	    else {
+    	        super.popupMenu(side);
+    	    }
         }
-    }
+    });
 }
 
 function insertAddToDesktopButton(menu) {
@@ -44,13 +48,12 @@ function insertAddToDesktopButton(menu) {
     }
 
     let label = _('Add to Desktop');
-    let item;
+    item = new PopupMenu.PopupMenuItem(label);
     if(pos === -1) {
         menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-        item = menu._appendMenuItem(label); // add at the end
+        menu.addMenuItem(item); // add at the end
     }
     else {
-        item = new PopupMenu.PopupMenuItem(label);
         menu.addMenuItem(item, pos+1); // insert at specific position
     }
 

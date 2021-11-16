@@ -1,22 +1,22 @@
-const AppMenu = imports.ui.appMenu;
-
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const ShortcutMaker = Me.imports.shortcutMaker;
+const AppDisplay = imports.ui.appDisplay;
 
 // Saves the standard Menu globally to be able to reset it on disable
-var parentMenu = null;
+var parentIcon = null;
 
 function init () {
 
 }
 
 function enable () {
-    parentMenu = AppMenu.AppMenu;
-    ShortcutMaker.editMenuClass(parentMenu);
+    parentIcon = AppDisplay.AppIcon;
+    ShortcutMaker.editIconClass(parentIcon);
 }
 
 function disable () {
     // Reset the menu to the standard one (without new item)
-    AppMenu.AppMenu = parentMenu;
+    AppDisplay.AppIcon = parentIcon;
 }
+
