@@ -10,9 +10,9 @@ done
 # find version
 while read line
 do
-    if echo "$line" | grep -q '"version" :'
+    if echo "$line" | grep -q '"version":'
     then
-        version=${line:12:${#line}-12};
+        version=${line:11:${#line}-11};
     fi
 done < metadata.json
 
