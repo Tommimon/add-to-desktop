@@ -17,6 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: shortcutMaker.js:52
+#: shortcutMaker.js:50
 msgid "Add to Desktop"
 msgstr "바탕 화면에 추가"
