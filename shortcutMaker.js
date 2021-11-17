@@ -19,7 +19,7 @@ function _(stringIn) {
 function editIconClass(parentIcon) {
     AppDisplay.AppIcon = GObject.registerClass(
     class CustomIcon extends parentIcon {
-        popupMenu(side = St.Side.LEFT)
+        popupMenu(side = St.Side.LEFT) {
     	    if(!this._menu) {
     	        super.popupMenu(side);
     	        insertAddToDesktopButton(this._menu);
