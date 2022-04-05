@@ -33,7 +33,7 @@ function editIconClass(parentIcon) {
 
 function insertAddToDesktopButton(menu) {
     // look for both english and translated
-    let nameArray = ['Add to Favorites', 'Remove from Favorites', shell_gettext('Add to Favorites'), shell_gettext('Remove from Favorites')]
+    let nameArray = ['Pin to Dash', 'Unpin', shell_gettext('Pin to Dash'), shell_gettext('Unpin')]
     let itemsArray = menu._getMenuItems();
     let pos = -1;
     for(let i = itemsArray.length-1; i >= 0; i--) {
