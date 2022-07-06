@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # compile language
 mkdir locale
 for f in po/*; do
