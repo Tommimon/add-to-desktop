@@ -31,7 +31,8 @@ for i in fields:
     form[i] = retrive_value(i)
 if form['Plural Forms (optional)'] == '':
     form['Plural Forms (optional)'] = 'nplurals=2; plural=(n > 1);'
-form['Translator email'] = form['Translator email'].split('>')[1].removesuffix('</a').strip()
+if form['Translator email'] != '':
+    form['Translator email'] = form['Translator email'].split('>')[1].removesuffix('</a').strip()
 form['year'] = str(datetime.datetime.now().year)
 form['datetime'] = str(datetime.datetime.now(datetime.timezone.utc)).split('.')[0][:-3] + '+0000'
 
