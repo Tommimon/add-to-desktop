@@ -19,7 +19,7 @@ fields = ['Language name',
 
 
 def retrive_value(field_name):
-    pattern = field_name + r':.*<[^a]'  # TODO: match empty string
+    pattern = field_name + r':.*<[^a]'
     matches = re.findall(pattern, block)
     if len(matches) == 0:
         return ''
