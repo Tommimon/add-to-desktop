@@ -119,7 +119,6 @@ var ShortcutMaker = class ShortcutMaker {
                     log(`Failed to allow launching: ${e.message}`);
                 }
             });
-        //TODO: metadata::shortcut-of
     }
 
     // set executable bit last because this call refresh in desktop icon extension
