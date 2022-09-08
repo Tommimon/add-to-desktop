@@ -1,15 +1,15 @@
 # Spanish translations for add-to-desktop package.
-# Copyright (C) 2020 the add-to-desktop's copyright holder
+# Copyright (C) 2022 the add-to-desktop's copyright holder
 # This file is distributed under the same license as the add-to-desktop package.
-# Tommimon <tommimon@gmail.com>, 2020.
+# ramiroaisen <ramiroaisen@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: add-to-desktop@tommimon.github.com\n"
 "Report-Msgid-Bugs-To: https://github.com/Tommimon/add-to-desktop\n"
-"POT-Creation-Date: 2020-12-07 10:40+0000\n"
-"PO-Revision-Date: 2020-12-07 10:40+0000\n"
-"Last-Translator: Tommimon <tommimon@gmail.com>\n"
+"POT-Creation-Date: 2022-09-08 15:06+0000\n"
+"PO-Revision-Date: 2022-09-08 15:06+0000\n"
+"Last-Translator: ramiroaisen <ramiroaisen@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -19,4 +19,5 @@ msgstr ""
 
 #: shortcutMaker.js:50
 msgid "Add to Desktop"
-msgstr "Agregar al Escritorio"
+msgstr "Añadir al Escritorio"
+
