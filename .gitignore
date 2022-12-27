@@ -1,9 +1,12 @@
 # Developer private file directory
-/private/
+private/
 
 # IntelliJ directory
-/.idea/
+.idea/
+
+# VS Code directory
+.vscode/
 
 # compiled and releases
-/locale/
-/output/
+locale/
+output/
