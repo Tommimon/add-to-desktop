@@ -15,20 +15,17 @@ function _(stringIn) {
 	return Gettext.dgettext('add-to-desktop', stringIn)
 }
 
-// override the icon popupMenu method to add the new item
-function editIconClass(parentIcon) {
-    AppDisplay.AppIcon = GObject.registerClass(
-    class CustomIcon extends parentIcon {
-        popupMenu(side = St.Side.LEFT) {
-    	    if(!this._menu) {
-    	        super.popupMenu(side);
-    	        insertAddToDesktopButton(this._menu);
-    	    }
-    	    else {
-    	        super.popupMenu(side);
-    	    }
+// edit the icon popupMenu method to add the new item
+function editIconClass(oldPopupMenu) {
+    AppDisplay.AppIcon.prototype._preAddToDesktopPopupMenu = oldPopupMenu;
+    AppDisplay.AppIcon.prototype.popupMenu = function(side = St.Side.LEFT) {
+        let firstCall = !this._menu;  // if _menu is not defined is the first call to this function
+        let res =  this._preAddToDesktopPopupMenu(side);
+        if (firstCall) {
+            insertAddToDesktopButton(this._menu);
         }
-    });
+        return res;
+    };
 }
 
 function insertAddToDesktopButton(menu) {
