@@ -35,12 +35,12 @@ function insertAddToDesktopButton(menu) {
     });
     let itemsArray = menu._getMenuItems();
     let pos = -1;
-    for(let i = itemsArray.length-1; i >= 0; i--) {
+    for (let i = itemsArray.length-1; i >= 0; i--) {
         let item = itemsArray[i];
         // check class because there are also separators or other things
-        if(item instanceof PopupMenu.PopupMenuItem) {
+        if (item instanceof PopupMenu.PopupMenuItem) {
             let label = item.label.get_text();
-            if(nameArray.includes(label)) {
+            if (nameArray.includes(label)) {
                 pos = i;
             }
         }
@@ -48,7 +48,7 @@ function insertAddToDesktopButton(menu) {
 
     let label = _('Add to Desktop');
     item = new PopupMenu.PopupMenuItem(label);
-    if(pos === -1) {
+    if (pos === -1) {
         menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
         menu.addMenuItem(item); // add at the end
     }

@@ -22,4 +22,3 @@ function disable () {
     // Reset the menu to the standard one (without new item)
     AppDisplay.AppIcon.prototype.popupMenu = oldPopupMenu;
 }
-
