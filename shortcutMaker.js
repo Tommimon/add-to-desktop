@@ -29,8 +29,10 @@ function editIconClass(oldPopupMenu) {
 }
 
 function insertAddToDesktopButton(menu) {
-    // look for both english and translated
-    let nameArray = ['Pin to Dash', 'Unpin', shell_gettext('Pin to Dash'), shell_gettext('Unpin')]
+    let nameArray = ['Add to Favorites', 'Remove from Favorites', 'Pin to Dash', 'Unpin'];
+    nameArray.forEach(name => {
+        nameArray.push(shell_gettext(name));  // look for both english and translated
+    });
     let itemsArray = menu._getMenuItems();
     let pos = -1;
     for(let i = itemsArray.length-1; i >= 0; i--) {
