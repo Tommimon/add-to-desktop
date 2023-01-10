@@ -7,8 +7,10 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: "### Language Data
-      This section is relative to the language you are asking to add support for"
+      value: "### Language Data"
+  - type: markdown
+    attributes:
+      value: "This section is relative to the language you are asking to add support for"
   - type: input
     id: language_name
     attributes:
@@ -31,8 +33,10 @@ body:
       required: false
   - type: markdown
     attributes:
-      value: "### Translator Data
-      Fill this section with your personal details"
+      value: "### Translator Data"
+  - type: markdown
+    attributes:
+      value: "Fill this section with your personal details"
   - type: input
     id: translator_username
     attributes:
