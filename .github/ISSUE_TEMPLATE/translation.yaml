@@ -1,0 +1,51 @@
+name: Translation Request
+description: Request to add a new language to this extension, the user is required to give the translation.
+title: "Add [LANGUAGE] translation"
+labels: ["enhancement"]
+assignees: ''
+body:
+  - type: markdown
+    attributes:
+      value: "## Language Data"
+  - type: input
+    id: language_name
+    attributes:
+      label: Language Name
+    validations:
+      required: false
+  - type: input
+    id: language_code
+    attributes:
+      label: Language Code
+    validations:
+      required: false
+  - type: input
+    id: plural_forms
+    attributes:
+      label: Plural Forms (optional)
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: "## Translator Data"
+  - type: input
+    id: translator_username
+    attributes:
+      label: Translator Username
+    validations:
+      required: false
+  - type: input
+    id: translator_email
+    attributes:
+      label: Translator Email
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: "## Translation"
+  - type: input
+    id: add_to_desktop
+    attributes:
+      label: Add to Desktop
+    validations:
+      required: false
