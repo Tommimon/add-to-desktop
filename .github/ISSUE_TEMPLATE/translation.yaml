@@ -7,19 +7,22 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: "### Language Data"
+      value: "### Language Data
+      This section is relative to the language you are asking to add support for"
   - type: input
     id: language_name
     attributes:
       label: Language Name
     validations:
       required: true
+      placeholder: ex. Italian
   - type: input
     id: language_code
     attributes:
       label: Language Code
     validations:
       required: true
+      placeholder: ex. it
   - type: input
     id: plural_forms
     attributes:
@@ -28,17 +31,18 @@ body:
       required: false
   - type: markdown
     attributes:
-      value: "### Translator Data"
+      value: "### Translator Data
+      Fill this section with your personal details"
   - type: input
     id: translator_username
     attributes:
-      label: Translator Username
+      label: Username
     validations:
       required: true
   - type: input
     id: translator_email
     attributes:
-      label: Translator Email
+      label: Email
     validations:
       required: true
   - type: markdown
@@ -48,7 +52,7 @@ body:
     id: add_to_desktop
     attributes:
       label: Add to Desktop
-      description: Give your translation for this english expression
+      description: Give your translation for the expression `Add to Desktop`
     validations:
       required: true
   - type: markdown
