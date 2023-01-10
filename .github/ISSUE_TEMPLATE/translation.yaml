@@ -7,46 +7,50 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: "## Language Data"
+      value: "### Language Data"
   - type: input
     id: language_name
     attributes:
       label: Language Name
     validations:
-      required: false
+      required: true
   - type: input
     id: language_code
     attributes:
       label: Language Code
     validations:
-      required: false
+      required: true
   - type: input
     id: plural_forms
     attributes:
-      label: Plural Forms (optional)
+      label: Plural Forms
     validations:
       required: false
   - type: markdown
     attributes:
-      value: "## Translator Data"
+      value: "### Translator Data"
   - type: input
     id: translator_username
     attributes:
       label: Translator Username
     validations:
-      required: false
+      required: true
   - type: input
     id: translator_email
     attributes:
       label: Translator Email
     validations:
-      required: false
+      required: true
   - type: markdown
     attributes:
-      value: "## Translation"
+      value: "### Translation"
   - type: input
     id: add_to_desktop
     attributes:
       label: Add to Desktop
+      description: Give your translation for this english expression
     validations:
-      required: false
+      required: true
+  - type: markdown
+    attributes:
+      value: "Thanks for taking the time to fill out this translation request!"
