@@ -2,7 +2,8 @@ name: Translation Request
 description: Request to add a new language to this extension, the user is required to give the translation.
 title: "Add [LANGUAGE] translation"
 labels: ["enhancement"]
-assignees: ''
+assignees:
+  - Tommimon
 body:
   - type: markdown
     attributes:
