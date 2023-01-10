@@ -29,6 +29,7 @@ body:
     id: plural_forms
     attributes:
       label: Plural Forms
+      placeholder: ex. nplurals=2; plural=(n > 1);
     validations:
       required: false
   - type: markdown
@@ -57,6 +58,7 @@ body:
     attributes:
       label: Add to Desktop
       description: Give your translation for the expression `Add to Desktop`
+      placeholder: Aggiungi alla Scrivania
     validations:
       required: true
   - type: markdown
