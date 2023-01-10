@@ -58,7 +58,7 @@ body:
     attributes:
       label: Add to Desktop
       description: Give your translation for the expression `Add to Desktop`
-      placeholder: Aggiungi alla Scrivania
+      placeholder: ex. Aggiungi alla Scrivania
     validations:
       required: true
   - type: markdown
