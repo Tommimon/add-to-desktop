@@ -15,16 +15,16 @@ body:
     id: language_name
     attributes:
       label: Language Name
+      placeholder: ex. Italian
     validations:
       required: true
-      placeholder: ex. Italian
   - type: input
     id: language_code
     attributes:
       label: Language Code
+      placeholder: ex. it
     validations:
       required: true
-      placeholder: ex. it
   - type: input
     id: plural_forms
     attributes:
