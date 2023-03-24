@@ -1,0 +1,23 @@
+# Czech translations for add-to-desktop package.
+# Copyright (C) 2023 the add-to-desktop's copyright holder
+# This file is distributed under the same license as the add-to-desktop package.
+#  Amerey.eu <info@amerey.eu>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: add-to-desktop@tommimon.github.com\n"
+"Report-Msgid-Bugs-To: https://github.com/Tommimon/add-to-desktop\n"
+"POT-Creation-Date: 2023-03-24 15:30+0000\n"
+"PO-Revision-Date: 2023-03-24 16:32+0100\n"
+"Last-Translator: Amerey.eu <info@amerey.eu>\n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: shortcutMaker.js:50
+msgid "Add to Desktop"
+msgstr "Přidat na plochu"
