@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: add-to-desktop\n"
+"Project-Id-Version: add-to-desktop@tommimon.github.com\n"
 "Report-Msgid-Bugs-To: https://github.com/Tommimon/add-to-desktop\n"
 "POT-Creation-Date: 2022-02-25 12:55+0900\n"
 "PO-Revision-Date: 2022-02-25 13:03+0900\n"
