@@ -3,9 +3,10 @@
   "name": "Add to Desktop",
   "shell-version": [
     "42",
-    "43"
+    "43",
+    "44"
   ],
   "url": "https://github.com/Tommimon/add-to-desktop",
   "uuid": "add-to-desktop@tommimon.github.com",
-  "version": 9
+  "version": 10
 }
