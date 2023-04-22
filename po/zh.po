@@ -1,5 +1,5 @@
 # Chinese translations for add-to-desktop package.
-# Copyright (C) 2022 the add-to-desktop's copyright holder
+# Copyright (C) 2020-2023 the add-to-desktop's copyright holder
 # This file is distributed under the same license as the add-to-desktop package.
 # b0123456789 <909124951@qq.com>, 2022.
 #

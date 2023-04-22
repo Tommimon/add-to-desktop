@@ -1,5 +1,5 @@
 # Spanish translations for add-to-desktop package.
-# Copyright (C) 2022 the add-to-desktop's copyright holder
+# Copyright (C) 2020-2023 the add-to-desktop's copyright holder
 # This file is distributed under the same license as the add-to-desktop package.
 # ramiroaisen <ramiroaisen@gmail.com>, 2022.
 #
