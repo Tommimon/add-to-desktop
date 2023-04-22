@@ -37,7 +37,7 @@ form['year'] = str(datetime.datetime.now().year)
 form['datetime'] = str(datetime.datetime.now(datetime.timezone.utc)).split('.')[0][:-3] + '+0000'
 
 text = '''# LANGUAGE NAME translations for add-to-desktop package.
-# Copyright (C) YEAR the add-to-desktop's copyright holder
+# Copyright (C) 2020-YEAR the add-to-desktop's copyright holder
 # This file is distributed under the same license as the add-to-desktop package.
 # TRANSLATOR USERNAME <TRANSLATOR EMAIL>, YEAR.
 #

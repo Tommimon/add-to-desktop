@@ -1,0 +1,22 @@
+# [LANGUAGE] translations for add-to-desktop package.
+# Copyright (C) 2020-[YEAR] the add-to-desktop's copyright holder
+# This file is distributed under the same license as the add-to-desktop package.
+# [USERNAME] [EMAL], [YEAR].
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: add-to-desktop@tommimon.github.com\n"
+"Report-Msgid-Bugs-To: https://github.com/Tommimon/add-to-desktop\n"
+"POT-Creation-Date: [DATE_TIME]\n"
+"PO-Revision-Date: [DATE_TIME]\n"
+"Last-Translator: [USERNAME] [EMAL]\n"
+"Language-Team: [LANGUAGE]\n"
+"Language: [LANGUAGE_CODE]\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: [PLURAL_FORMS];\n"
+
+#: shortcutMaker.js:49
+msgid "Add to Desktop"
+msgstr "[TRANSLATION]"

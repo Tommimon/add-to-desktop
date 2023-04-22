@@ -49,7 +49,29 @@ if there isn't this directory, create it.
 \** Hit <kbd>Alt</kbd> + <kbd>F2</kbd> type `r` and hit <kbd>Enter</kbd>, if you prefer
 you can log out instead.
 
-## How does it work
+## Submitting a new Translation
+
+You can improve this extension by translating it in a new language:
+
+- First make sure the langues is not present in the [list of supported languages](https://github.com/Tommimon/add-to-desktop/tree/master/po) yet
+- To submit the translation you can open an Issue or a Pull Request:
+
+1) **Issue**
+    - Go to [issue template page](https://github.com/Tommimon/add-to-desktop/issues/new/choose)
+    - Chose `Translation Request` template
+    - Fill the form with the information contained in your `.po` file
+    - Submit the form
+
+2) **Pull Request**
+    - Start from the [translation.po](https://github.com/Tommimon/add-to-desktop/blob/master/translation.po) template
+    - All parts you must replace are marked with square brackets `[...]`
+    - Run [po-verifier.py](https://github.com/Tommimon/add-to-desktop/blob/master/po-verifier.py) to check your syntax
+    - Submit a Pull Request containing the new file
+
+In any case the translation will be chacked as soon as possible and included in next extension release.
+Translations not following these guidelines will be rejected.
+
+## How does it work?
 
 What this extension actually do is creating on your Desktop folder a copy of the original
 `.desktop` file used from the application launcher.
