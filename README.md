@@ -68,7 +68,7 @@ You can improve this extension by translating it in a new language:
     - Run [po-verifier.py](https://github.com/Tommimon/add-to-desktop/blob/master/po-verifier.py) to check your syntax
     - Submit a Pull Request containing the new file
 
-In any case the translation will be chacked as soon as possible and included in next extension release.
+In any case the translation will be checked as soon as possible and included in next extension release.
 Translations not following these guidelines will be rejected.
 
 ## How does it work?
