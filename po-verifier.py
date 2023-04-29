@@ -14,7 +14,7 @@ msgstr ""\n*
 "PO-Revision-Date: 20[0-9][0-9]-[01][0-9]-[0-3][0-9] [012][0-9]:[0-5][0-9][\+\-][01][0-9][0-5][0-9]\\n"\n*
 "Last-Translator: [^\#\"\:\n]+ <\S+@\S+\.\S+>\\n"\n*
 "Language-Team: [A-Z][A-Za-z ]+\\n"\n*
-"Language: [a-z][a-z]\\n"\n*
+"Language: [a-z][a-z](_[A-Z][A-Z])?\\n"\n*
 "MIME-Version: [\.0-9]+\\n"\n*
 "Content-Type: text\/plain; charset=UTF-8\\n"\n*
 "Content-Transfer-Encoding: 8bit\\n"\n*
