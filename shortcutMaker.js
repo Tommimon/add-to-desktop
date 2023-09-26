@@ -1,7 +1,6 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import St from 'gi://St';
-import GObject from 'gi://GObject';
 import * as AppDisplay from 'resource:///org/gnome/shell/ui/appDisplay.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import Gettext from 'gettext';
@@ -95,7 +94,7 @@ var ShortcutMaker = class ShortcutMaker {
                     source.copy_finish(result);
                     this._setMetadata();
                 } catch(e) {
-                    log(`Failed to create shortcut file: ${e.message}`);
+                    console.error(`Failed to create shortcut file: ${e.message}`);
                 }
             });
     }
@@ -110,7 +109,7 @@ var ShortcutMaker = class ShortcutMaker {
                     source.wait_check_finish(result);
                     this._setExecutableBit();
                 } catch(e) {
-                    log(`Failed to allow launching: ${e.message}`);
+                    console.error(`Failed to allow launching: ${e.message}`);
                 }
             });
     }
@@ -126,9 +125,9 @@ var ShortcutMaker = class ShortcutMaker {
             (source, result) => {
                 try {
                     source.set_attributes_finish (result);
-                    log('Shortcut created successfully');
+                    console.log('Shortcut created successfully');
                 } catch(e) {
-                    log(`Failed to set unix mode: ${e.message}`);
+                    console.error(`Failed to set unix mode: ${e.message}`);
                 }
             });
     }
