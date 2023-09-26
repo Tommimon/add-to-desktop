@@ -7,9 +7,6 @@ import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 var oldPopupMenu = null;
 
 export default class AddToDesktop extends Extension {
-    init () {
-    }
-
     enable () {
         if (GObject.type_from_name("Gjs_add-to-desktop_tommimon_github_com_shortcutMaker_CustomIcon") == null) {
             oldPopupMenu = AppDisplay.AppIcon.prototype.popupMenu;
