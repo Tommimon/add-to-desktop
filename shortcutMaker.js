@@ -1,22 +1,17 @@
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const { Gio, GLib, St, GObject } = imports.gi;
-const AppDisplay = imports.ui.appDisplay;
-const PopupMenu = imports.ui.popupMenu;
-const Gettext = imports.gettext;
-const Config = imports.misc.config;
-Gettext.textdomain(Config.GETTEXT_PACKAGE); // use 'gnome-shell' as default domain
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import St from 'gi://St';
+import GObject from 'gi://GObject';
+import * as AppDisplay from 'resource:///org/gnome/shell/ui/appDisplay.js';
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
+import Gettext from 'gettext';
 const shell_gettext = Gettext.gettext;
-Gettext.bindtextdomain( 'add-to-desktop', Me.dir.get_child('locale').get_path());
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 var DEFAULT_AND_UEXEC = 0o00764;
 
-function _(stringIn) {
-	return Gettext.dgettext('add-to-desktop', stringIn)
-}
-
 // edit the icon popupMenu method to add the new item
-function editIconClass(oldPopupMenu) {
+export function editIconClass(oldPopupMenu) {
     AppDisplay.AppIcon.prototype._preAddToDesktopPopupMenu = oldPopupMenu;
     AppDisplay.AppIcon.prototype.popupMenu = function(side = St.Side.LEFT) {
         let firstCall = !this._menu;  // if _menu is not defined is the first call to this function
@@ -29,7 +24,7 @@ function editIconClass(oldPopupMenu) {
 }
 
 function insertAddToDesktopButton(menu) {
-    let nameArray = ['Add to Favorites', 'Remove from Favorites', 'Pin to Dash', 'Unpin'];
+    let nameArray = ['Pin to Dash', 'Unpin'];
     nameArray.forEach(name => {
         nameArray.push(shell_gettext(name));  // look for both english and translated
     });
@@ -47,7 +42,7 @@ function insertAddToDesktopButton(menu) {
     }
 
     let label = _('Add to Desktop');
-    item = new PopupMenu.PopupMenuItem(label);
+    let item = new PopupMenu.PopupMenuItem(label);
     if (pos === -1) {
         menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
         menu.addMenuItem(item); // add at the end
