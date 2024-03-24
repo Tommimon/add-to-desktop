@@ -1,0 +1,22 @@
+# Catalan translations for add-to-desktop package.
+# Copyright (C) 2020-2024 the add-to-desktop's copyright holder
+# This file is distributed under the same license as the add-to-desktop package.
+# Joan Esgleas <joan.esgleas@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: add-to-desktop@tommimon.github.com\n"
+"Report-Msgid-Bugs-To: https://github.com/Tommimon/add-to-desktop\n"
+"POT-Creation-Date: 2024-03-24 18:16+0000\n"
+"PO-Revision-Date: 2024-03-24 18:16+0000\n"
+"Last-Translator: Joan Esgleas <joan.esgleas@gmail.com>\n"
+"Language-Team: Catalan\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: shortcutMaker.js:49
+msgid "Add to Desktop"
+msgstr "Afegir a l'Escriptori"
