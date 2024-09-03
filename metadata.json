@@ -3,10 +3,11 @@
   "name": "Add to Desktop",
   "shell-version": [
     "45",
-    "46.beta"
+    "46",
+    "47"
   ],
   "url": "https://github.com/Tommimon/add-to-desktop",
   "uuid": "add-to-desktop@tommimon.github.com",
   "gettext-domain": "add-to-desktop",
-  "version": 12
+  "version": 13
 }
