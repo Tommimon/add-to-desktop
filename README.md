@@ -53,7 +53,7 @@ you can log out instead.
 
 You can improve this extension by translating it in a new language:
 
-- First make sure the langues is not present in the [list of supported languages](https://github.com/Tommimon/add-to-desktop/tree/master/po) yet
+- First make sure the language isn't already in the [list of supported languages](https://github.com/Tommimon/add-to-desktop/tree/master/po)
 - To submit the translation you can open an Issue or a Pull Request:
 
 1) **Issue**
