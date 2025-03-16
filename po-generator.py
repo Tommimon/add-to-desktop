@@ -1,12 +1,13 @@
 import datetime
 import re
-
 import requests
+import html
+import unicodedata
 
 n = input("Insert issue number: ")
 n = str(int(n))  # crash if not a number
 url = 'https://github.com/Tommimon/add-to-desktop/issues/' + n
-regex = r'<td class="d-block comment-body markdown-body  js-comment-body">[\s\S]*?<\/td>'
+regex = r'<div class="Box-sc-g0xbh4-0 markdown-body NewMarkdownViewer-module__safe-html-box--cRsz0">[\s\S]*?<\/div>'
 
 page = requests.get(url).text
 block = re.findall(regex, page)[0]
@@ -17,13 +18,15 @@ fields = ['Language Name',
           'Email',
           'Add to Desktop']
 
+def remove_non_printable_chars(s):
+    return ''.join(c for c in s if unicodedata.category(c)[0] != 'C')
 
 def retrive_value(field_name):
     pattern = r'<h3 dir="auto">' + field_name + r'<\/h3>\n<p dir="auto">(?:[^\/](?:\/[ae])*)+<\/p>'
     matches = re.findall(pattern, block)
     if len(matches) == 0:
         return ''
-    return matches[0].split('<p dir="auto">')[1].removesuffix('</p>').strip()
+    return remove_non_printable_chars(html.unescape(matches[0].split('<p dir="auto">')[1].removesuffix('</p>').strip()))
 
 
 form = dict()
