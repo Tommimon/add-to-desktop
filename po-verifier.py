@@ -18,7 +18,7 @@ msgstr ""\n*
 "MIME-Version: [\.0-9]+\\n"\n*
 "Content-Type: text\/plain; charset=UTF-8\\n"\n*
 "Content-Transfer-Encoding: 8bit\\n"\n*
-"Plural-Forms: [^\#\"\:\n]+\\n"\n*(\"[^ \#\"\:\n]+\: [^\#\"\:\n]+\\n\"\n)*\n*
+"Plural-Forms: [^\#\"\n]+\\n"\n*(\"[^ \#\"\:\n]+\: [^\#\"\:\n]+\\n\"\n)*\n*
 #: shortcutMaker\.js:49
 msgid "Add to Desktop"
 msgstr "[^\#\"\:\n]+"\n*$'''
