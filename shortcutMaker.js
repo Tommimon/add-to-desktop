@@ -4,10 +4,25 @@ import St from 'gi://St';
 import * as AppDisplay from 'resource:///org/gnome/shell/ui/appDisplay.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import Gettext from 'gettext';
-const shell_gettext = Gettext.gettext;
-import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+import {gettext as extension_gettext} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-var DEFAULT_AND_UEXEC = 0o00764;
+const shell_gettext = Gettext.gettext;
+const dashtodock_gettext = Gettext.domain('dashtodock').gettext;
+const DEFAULT_AND_UEXEC = 0o00764;
+
+
+// Universal translation function considering every domain
+// Priority: shell > dashtodock > extension
+function _(string) {
+    let t = shell_gettext(string);
+    if (t === string) {
+        t = dashtodock_gettext(string);
+        if (t === string) {
+            t = extension_gettext(string);
+        }
+    }
+    return t;
+}
 
 // edit the icon popupMenu method to add the new item
 export function editIconClass(oldPopupMenu) {
@@ -23,9 +38,9 @@ export function editIconClass(oldPopupMenu) {
 }
 
 function insertAddToDesktopButton(menu) {
-    let nameArray = ['Pin to Dash', 'Unpin'];
+    let nameArray = ['Pin to Dash', 'Unpin', 'Pin to Dock'];
     nameArray.forEach(name => {
-        nameArray.push(shell_gettext(name));  // look for both english and translated
+        nameArray.push(_(name));  // look for both english and translated
     });
     let itemsArray = menu._getMenuItems();
     let pos = -1;
