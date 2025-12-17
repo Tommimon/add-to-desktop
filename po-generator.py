@@ -7,7 +7,7 @@ import unicodedata
 n = input("Insert issue number: ")
 n = str(int(n))  # crash if not a number
 url = 'https://github.com/Tommimon/add-to-desktop/issues/' + n
-regex = r'<div class="Box-sc-g0xbh4-0 markdown-body NewMarkdownViewer-module__safe-html-box--cRsz0">[\s\S]*?<\/div>'
+regex = r'<div class="Box-sc-\w\w\w\w\w\w-\w markdown-body NewMarkdownViewer-module__safe-html-box--\w\w\w\w\w">[\s\S]*?<\/div>'
 
 page = requests.get(url).text
 block = re.findall(regex, page)[0]
