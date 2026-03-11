@@ -6,10 +6,11 @@
     "46",
     "47",
     "48",
-    "49"
+    "49",
+    "50"
   ],
   "url": "https://github.com/Tommimon/add-to-desktop",
   "uuid": "add-to-desktop@tommimon.github.com",
   "gettext-domain": "add-to-desktop",
-  "version": 15
+  "version": 16
 }
