@@ -20,12 +20,15 @@ jobs:
       - name: Run update-versions script
         run: bash update-versions.sh > version-output.txt 2>&1
         
-      - name: Extract version
-        id: get_version
+      - name: Extract versions
+        id: get_versions
         run: |
           VERSION=$(grep "Version:" version-output.txt | tail -1 | awk '{print $NF}')
+          SHELL_VERSION=$(grep "Shell-version:" version-output.txt | awk '{print $NF}')
           echo "version=v${VERSION}" >> $GITHUB_OUTPUT
+          echo "shell_version=${SHELL_VERSION}" >> $GITHUB_OUTPUT
           echo "Extracted version: v${VERSION}"
+          echo "Extracted shell-version: ${SHELL_VERSION}"
 
       - name: Commit version updates
         run: |
@@ -42,13 +45,13 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git tag ${{ steps.get_version.outputs.version }}
-          git push origin ${{ steps.get_version.outputs.version }}
+          git tag ${{ steps.get_versions.outputs.version }}
+          git push origin ${{ steps.get_versions.outputs.version }}
 
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.get_version.outputs.version }}
+          tag_name: ${{ steps.get_versions.outputs.version }}
           files: output/*
           generate_release_notes: true
           draft: true
