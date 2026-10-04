@@ -61,9 +61,6 @@ jobs:
           files: output/*
           body: |
             ${{ steps.release_notes.outputs.notes }}
-            
-            **Full Changelog:** [${{ steps.get_versions.outputs.version }}...previous](https://github.com/${{ github.repository }}/compare/${{ steps.get_versions.outputs.version }}...HEAD)
           generate_release_notes: true
-          draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
