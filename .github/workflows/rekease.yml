@@ -17,6 +17,17 @@ jobs:
         with:
           ref: master
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq zip gettext
+
+      - name: Run update-versions script
+        run: bash update-versions.sh
+
+      - name: Run build script
+        run: bash build.sh
+
       - name: Create tag
         run: |
           git config user.name "GitHub Actions"
