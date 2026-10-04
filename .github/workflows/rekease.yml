@@ -2,11 +2,6 @@ name: Create Release
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version tag (e.g., v1.0.0)'
-        required: true
-        type: string
 
 jobs:
   release:
@@ -23,13 +18,20 @@ jobs:
           sudo apt-get install -y jq zip gettext
 
       - name: Run update-versions script
-        run: bash update-versions.sh
+        run: bash update-versions.sh > version-output.txt 2>&1
+        
+      - name: Extract version
+        id: get_version
+        run: |
+          VERSION=$(grep "Version:" version-output.txt | tail -1 | awk '{print $NF}')
+          echo "version=v${VERSION}" >> $GITHUB_OUTPUT
+          echo "Extracted version: v${VERSION}"
 
       - name: Commit version updates
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add -A
+          git add metadata.json
           git commit -m "Bump extension and GNOME versions"
           git push origin master
 
@@ -40,13 +42,13 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git tag ${{ inputs.version }}
-          git push origin ${{ inputs.version }}
+          git tag ${{ steps.get_version.outputs.version }}
+          git push origin ${{ steps.get_version.outputs.version }}
 
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ inputs.version }}
+          tag_name: ${{ steps.get_version.outputs.version }}
           files: output/*
           generate_release_notes: true
           draft: true
