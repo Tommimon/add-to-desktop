@@ -48,11 +48,21 @@ jobs:
           git tag ${{ steps.get_versions.outputs.version }}
           git push origin ${{ steps.get_versions.outputs.version }}
 
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          NOTES="GNOME ${{ steps.get_versions.outputs.shell_version }} Compatibility"
+          echo "notes=${NOTES}" >> $GITHUB_OUTPUT
+
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.get_versions.outputs.version }}
           files: output/*
+          body: |
+            ${{ steps.release_notes.outputs.notes }}
+            
+            **Full Changelog:** [${{ steps.get_versions.outputs.version }}...previous](https://github.com/${{ github.repository }}/compare/${{ steps.get_versions.outputs.version }}...HEAD)
           generate_release_notes: true
           draft: true
         env:
