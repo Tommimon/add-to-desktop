@@ -25,6 +25,14 @@ jobs:
       - name: Run update-versions script
         run: bash update-versions.sh
 
+      - name: Commit version updates
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Bump extension and GNOME versions"
+          git push origin master
+
       - name: Run build script
         run: bash build.sh
 
